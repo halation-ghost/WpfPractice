@@ -2,5 +2,5 @@
 
 ## [episode:02](http://elf-mission.net/programming/wpf/episode02/)
 
-halation ghost WPF episode:2 ‚Åì¬‚µ‚½ƒTƒ“ƒvƒ‹B
+halation ghost WPF episode:2 ã§ä½œæˆã—ãŸã‚µãƒ³ãƒ—ãƒ«ã€‚
 
