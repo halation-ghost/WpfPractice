@@ -8,3 +8,7 @@ halation ghost WPF episode:3 で作成したサンプル。
 
 halation ghost WPF episode:3 で作成したサンプルの Prism 7.1 対応版。
 
+## [02_episode04](https://elf-mission.net/programming/wpf/episode04/)
+
+halation ghost WPF episode:4 で作成したサンプル。
+
