@@ -12,7 +12,7 @@ namespace WpfTestApp.ViewModels
 	public class TreeViewItemViewModel : BindableBase, IDisposable
 	{
 		/// <summary>TreeViewItemのテキストを取得します。</summary>
-		public ReactiveProperty<string> ItemText { get; }
+		public ReadOnlyReactivePropertySlim<string> ItemText { get; }
 
 		/// <summary>子ノードを取得します。</summary>
 		public ReactiveCollection<TreeViewItemViewModel> Children { get; }
@@ -36,24 +36,24 @@ namespace WpfTestApp.ViewModels
 			{
 				case PersonalInformation p:
 					this.ItemText = p.ObserveProperty(x => x.Name)
-						.ToReactiveProperty()
+						.ToReadOnlyReactivePropertySlim()
 						.AddTo(this.disposables);
 					break;
 				case PhysicalInformation ph:
 					this.ItemText = ph.ObserveProperty(x => x.MeasurementDate)
 						.Select(d => d.HasValue ? d.Value.ToString("yyy年MM月dd日") : "新しい測定")
-						.ToReactiveProperty()
+						.ToReadOnlyReactivePropertySlim()
 						.AddTo(this.disposables);
 					break;
 				case TestPointInformation t:
 					this.ItemText = t.ObserveProperty(x => x.TestDate)
-						.ToReactiveProperty()
+						.ToReadOnlyReactivePropertySlim()
 						.AddTo(this.disposables);
 					break;
 				case string s:
 					this.ItemText = this.ObserveProperty(x => x.SourceData)
 						.Select(v => v as string)
-						.ToReactiveProperty()
+						.ToReadOnlyReactivePropertySlim()
 						.AddTo(this.disposables);
 					break;
 			}
