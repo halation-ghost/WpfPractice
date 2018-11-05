@@ -11,7 +11,7 @@ namespace WpfTestApp.ViewModels
 	public class NavigationTreeViewModel : BindableBase, System.IDisposable
 	{
 		/// <summary>TreeViewItem を取得します。</summary>
-		public Reactive.Bindings.ReadOnlyReactiveCollection<TreeViewItemViewModel> TreeNodes { get; }
+		public ReadOnlyReactiveCollection<TreeViewItemViewModel> TreeNodes { get; }
 
 		private WpfTestAppData appData = null;
 		private TreeViewItemViewModel rootNode = null;
