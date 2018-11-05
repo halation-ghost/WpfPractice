@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Prism.Mvvm;
+using Reactive.Bindings;
 using Reactive.Bindings.Extensions;
 
 namespace WpfTestApp.ViewModels
@@ -10,7 +11,7 @@ namespace WpfTestApp.ViewModels
 	public class NavigationTreeViewModel : BindableBase, System.IDisposable
 	{
 		/// <summary>TreeViewItem を取得します。</summary>
-		public Reactive.Bindings.ReactiveCollection<TreeViewItemViewModel> TreeNodes { get; }
+		public Reactive.Bindings.ReadOnlyReactiveCollection<TreeViewItemViewModel> TreeNodes { get; }
 
 		private WpfTestAppData appData = null;
 		private TreeViewItemViewModel rootNode = null;
@@ -25,9 +26,10 @@ namespace WpfTestApp.ViewModels
 			this.appData = data;
 			this.rootNode = TreeViewItemCreator.Create(this.appData);
 
-			this.TreeNodes = new Reactive.Bindings.ReactiveCollection<TreeViewItemViewModel>()
+			var col = new System.Collections.ObjectModel.ObservableCollection<TreeViewItemViewModel>();
+			col.Add(this.rootNode);
+			this.TreeNodes = col.ToReadOnlyReactiveCollection()
 				.AddTo(this.disposables);
-			this.TreeNodes.Add(rootNode);
 		}
 
 		void System.IDisposable.Dispose() { this.disposables.Dispose(); }
